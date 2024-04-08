@@ -12,4 +12,4 @@ services:
       context: .
       dockerfile: src/PublicApi/Dockerfile
   environment:
-      - ConnectionStrings__DefaultConnection= "Server=mydbinstanceidentifier.cpugk80o4f95.us-east-1.rds.amazonaws.com,1433;User Id=admin;Password=adminpassword;Catalog=Microsoft.eShopOnWeb.Identity;"
+      - ConnectionStrings__DefaultConnection: "Server=mydbinstanceidentifier.cpugk80o4f95.us-east-1.rds.amazonaws.com,1433;User Id=admin;Password=adminpassword;Catalog=Microsoft.eShopOnWeb.Identity;"
