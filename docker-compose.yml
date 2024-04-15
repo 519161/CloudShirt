@@ -6,8 +6,17 @@ services:
     build:
       context: .
       dockerfile: src/Web/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__CatalogConnection=Server=mydbinstanceidentifier.cpugk80o4f95.us-east-1.rds.amazonaws.com,1433;Integrated Security=true;Initial Catalog=Microsoft.eShopOnWeb.CatalogDb;User Id=adim;Password=adminpassword;Trusted_Connection=false;
+      - ConnectionStrings__IdentityConnection=Server=mydbinstanceidentifier.cpugk80o4f95.us-east-1.rds.amazonaws.com,1433;Integrated Security=true;Initial Catalog=Microsoft.eShopOnWeb.Identity;User Id=admin;Password=adminpassword;Trusted_Connection=false;
+      - baseUrls__apiBase=http://localhost:5200/api/
+      - baseUrls__webBase=http://host.docker.internal:5106/
   eshoppublicapi:
     image: ${DOCKER_REGISTRY-}eshoppublicapi
     build:
       context: .
-      dockerfile: src/PublicApi/Dockerfile
+      dockerfile: src/PublicApi/Dockerfile    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__CatalogConnection=Server=mydbinstanceidentifier.cpugk80o4f95.us-east-1.rds.amazonaws.com,1433;Integrated Security=true;Initial Catalog=Microsoft.eShopOnWeb.CatalogDb;User Id=admin;Password=adminpassword;Trusted_Connection=false;
+      - ConnectionStrings__IdentityConnection=Server=mydbinstanceidentifier.cpugk80o4f95.us-east-1.rds.amazonaws.com,1433;Integrated Security=true;Initial Catalog=Microsoft.eShopOnWeb.Identity;User Id=admin;Password=adminpassword;Trusted_Connection=false;
