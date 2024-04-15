@@ -16,7 +16,8 @@ services:
     image: ${DOCKER_REGISTRY-}eshoppublicapi
     build:
       context: .
-      dockerfile: src/PublicApi/Dockerfile    environment:
+      dockerfile: src/PublicApi/Dockerfile    
+    environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__CatalogConnection=Server=mydbinstanceidentifier.cpugk80o4f95.us-east-1.rds.amazonaws.com,1433;Integrated Security=true;Initial Catalog=Microsoft.eShopOnWeb.CatalogDb;User Id=admin;Password=adminpassword;Trusted_Connection=false;
       - ConnectionStrings__IdentityConnection=Server=mydbinstanceidentifier.cpugk80o4f95.us-east-1.rds.amazonaws.com,1433;Integrated Security=true;Initial Catalog=Microsoft.eShopOnWeb.Identity;User Id=admin;Password=adminpassword;Trusted_Connection=false;
